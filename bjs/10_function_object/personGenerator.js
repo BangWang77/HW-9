@@ -136,7 +136,7 @@ const personGenerator = {
     randomPatronymic: function() { // Метод генерации отчества
         if (this.person.gender == 'Мужчина'){
         return this.randomValue(this.patronymicNameJson);
-        } else {
+       } else {
             return this.randomValue(this.patronymicNameJson);
         }
 
@@ -148,7 +148,7 @@ const personGenerator = {
         this.person.gender = this.randomGender();
         this.person.firstName = this.randomFirstName();
         this.person.surname = this.randomSurname();
-       this.person.patronymic = this.randomPatronymic();
+        //this.person.patronymic = this.randomPatronymic();
         return this.person;
     }
 };
