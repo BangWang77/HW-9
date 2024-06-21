@@ -53,7 +53,7 @@ const personGenerator = {
         }
     }`,
 
-    patronymicNameJson: `{
+    patronymicnameJson: `{
         "count": 10,
         "list": {
             "id_1": "Алексеев",
@@ -65,7 +65,7 @@ const personGenerator = {
             "id_7": "Александров",
             "id_8": "Рафиков",
             "id_9": "Максимов",
-            "id_10": "Денисов",
+            "id_10": "Денисов"
         }
     }`,
     jobMaleJson: `{
@@ -80,7 +80,7 @@ const personGenerator = {
             "id_7": "Военный",
             "id_8": "Старатель",
             "id_9": "Слесарь",
-            "id_10": "Токарь",
+            "id_10": "Токарь"
         }
 
     }`,
@@ -96,7 +96,7 @@ const personGenerator = {
             "id_7": "Учительница",
             "id_8": "Домработница",
             "id_9": "Домохозяйка",
-            "id_10": "Кондитер",
+            "id_10": "Кондитер"
         }
     }`,
 
@@ -133,11 +133,20 @@ const personGenerator = {
 
     },
 
-    randomPatronymic: function() { // Метод генерации отчества
+    randomPatronymicname: function() { // Метод генерации отчества
         if (this.person.gender == 'Мужчина'){
-        return this.randomValue(this.patronymicNameJson);
+        return this.randomValue(this.patronymicnameJson) + 'ич';
        } else {
-            return this.randomValue(this.patronymicNameJson);
+            return this.randomValue(this.patronymicnameJson) + 'а';
+        }
+
+    },
+
+    randomJob: function() {//генерация работы
+        if(this.person.gender == 'Мужчина'){
+            return this.randomValue(this.jobMaleJson);
+        } else{
+            return this.randomValue(this.jobFemaleJson);
         }
 
     },
@@ -148,7 +157,8 @@ const personGenerator = {
         this.person.gender = this.randomGender();
         this.person.firstName = this.randomFirstName();
         this.person.surname = this.randomSurname();
-        //this.person.patronymic = this.randomPatronymic();
+        this.person.patronymic = this.randomPatronymicname();
+        this.person.job = this.randomJob();
         return this.person;
     }
 };
