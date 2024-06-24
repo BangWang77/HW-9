@@ -103,6 +103,7 @@ const personGenerator = {
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
 
+
     randomGender: function () {
         return Math.floor(Math.random()*2) == 1 ? this.GENDER_MALE : this.GENDER_FEMALE; // Метод выбора пола
     },
@@ -133,12 +134,38 @@ const personGenerator = {
 
     },
 
+
+
     randomPatronymicname: function() { // Метод генерации отчества
-        if (this.person.gender == 'Мужчина'){
-        return this.randomValue(this.patronymicnameJson) + 'ич';
-       } else {
-            return this.randomValue(this.patronymicnameJson) + 'а';
-        }
+        //if (this.person.gender == 'Мужчине') {
+            //return halfName + 'a'
+        //} else{
+            //return halfName + 'овна'
+        //}
+        let halfName = this.randomValue(this.firstNameMaleJson);
+        console.log(halfName)
+        if (this.person.gender == 'Мужчина') {
+            if (halfName.slice(-1) == 'й') {halfName.replace('й', 'е')};
+            if (halfName.slice(-1) == 'а') {halfName.replace('а', 'о')}
+            return this.randomValue(halfName) + 'ович'
+        } else {
+            return this.randomValue(this.jobMaleJson)
+        };
+        
+        //this.randomPatronymicname = halfName;
+        //console.log(halfName)
+        //if (halfName.slice(-1) === 'а') {halfName.replace('а', 'о')};
+       // if (this.person.gender == 'Мужчина'){
+        //    return halfName();
+        //} else{
+        //    return halfName() + 'а'
+        //}
+
+        //if (this.person.gender == 'Мужчина'){
+        //return this.randomValue(this.patronymicnameJson) + 'ич';
+       //} else {
+            //return this.randomValue(this.patronymicnameJson) + 'а';
+        //}
 
     },
 
