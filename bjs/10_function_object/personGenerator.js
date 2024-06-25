@@ -147,9 +147,11 @@ const personGenerator = {
         if (this.person.gender == 'Мужчина') {
             if (halfName.slice(-1) == 'й') {halfName.replace('й', 'е')};
             if (halfName.slice(-1) == 'а') {halfName.replace('а', 'о')}
-            return this.randomValue(halfName) + 'ович'
+            return halfName + 'ович'
         } else {
-            return this.randomValue(this.jobMaleJson)
+            if (halfName.slice(-1) == 'й') {halfName.replace('й', 'е')};
+            if (halfName.slice(-1) == 'а') {halfName.replace('а', 'о')}
+            return halfName + 'овна'
         };
         
         //this.randomPatronymicname = halfName;
